@@ -1,0 +1,49 @@
+# 切换视图
+ActiveWindow.ViewType = ppViewNormal        # 默认视图
+ActiveWindow.ViewType = ppViewSlideMaster   # 母版视图
+# 设置前景色
+ActivePresentation.Slides(1).Background.Fill.ForeColor.RGB = 16777215   # 默认视图
+ActivePresentation.Designs(1).SlideMaster.Background.Fill.ForeColor.RGB = 16777215  # 母版视图
+# 纹理填充
+ActivePresentation.Slides(1).Background.Fill.PresetTextured(13)   # 默认视图
+ActivePresentation.Designs(1).SlideMaster.CustomLayouts(1).Background.Fill.PresetTextured(6)  # 样式视图
+# 设置前景色百分比
+ActivePresentation.Slides(1).Background.Fill.Patterned(1)
+# 添加艺术字
+ActivePresentation.Slides(1).Shapes.AddTextEffect(msoTextEffect1, "Sample Text", "Arial Black", 72, msoFalse, msoFalse, 0, 0).Select
+# 隐藏背景图片（0：隐藏 1：取消隐藏）
+ActiveWindow.Selection.SlideRange.DisplayMasterShapes = 0、-1
+# 添加矩形（默认视图&母版视图）
+ActiveWindow.Selection.SlideRange.Shapes.AddShape(msoShapeRectangle, 167.25, 71.5, 56.62, 28.38)
+ActivePresentation.Designs(1).SlideMaster.CustomLayouts(1).Shapes.AddShape(msoShapeRectangle, 167.25, 71.5, 56.62, 28.38)
+# 设置幻灯片模板
+ActivePresentation.ApplyTemplate()  # 指定设计模板的名称。
+# 设置幻灯片主题
+ActivePresentation.ApplyTheme()   # 路径和主题文件 (.thmx) 或设计模板文件 (.pot) 应用于 演示文稿 对象的名称。
+# 撤销&恢复
+CommandBars.ExecuteMso("Undo")
+CommandBars.ExecuteMso("Redo")
+# 复制&粘贴
+ActiveWindow.Selection.Copy()
+ActiveWindow.View.Paste()
+# 幻灯片内shape个数
+ActiveWindow.Selection.SlideRange.Shapes.Count
+# 幻灯片内shape类型（返回int）
+ActiveWindow.Selection.SlideRange.Shapes(i).Type
+# 插入音频
+ActivePresentation.Slides(1).Shapes.AddMediaObject(fileName)
+# 媒体类型（音频：2）
+ActivePresentation.Slides(1).Shapes.Item(i).MediaType
+# 插入艺术字
+ActivePresentation.Slides(1).Shapes.AddTextEffect(30, "艺术字", "Arial Black", 72, 1, 0, 0, 0)
+# 插入新表格
+ActivePresentation.Slides(1).Shapes.AddTable(2,2)
+# 修改文字主题
+ActivePresentation.SlideMaster.Theme.ThemeFontScheme.Load(fileName)
+# 插入文本框
+ActivePresentation.Slides(1).Shapes.AddTextbox()    # 区分横向、纵向
+# 插入文字
+xxxxx.TextFrame.TextRange.Text = "珠海金山"   # xxxx例：ActivePresentation.Slides(1).Shapes.AddTextbox(msoTextOrientationHorizontal, 167.25, 71.5, 200, 50)
+
+
+
